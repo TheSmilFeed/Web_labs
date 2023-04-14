@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>EnglishGeo-Главная</title>
+</head>
+<body>
+    
+    <div class="content">
+        <div class="nav">
+            <div class="nav-left">
+                <img src="assets/logo.jpg" alt="Лого">
+                <div class="nav-info">
+                    <h3>EnglishGeo</h3>
+                    <p>Экскурсии по Москве</p>
+                </div>
+            </div>
+            <div class="nav-right">
+                <a href="cabinet.html">Личный кабинет</a>
+            </div>
+        </div>
+        <div class="container mt-4"> <!--  -->
+            <div class="row justify-content-md-center">
+                <img class="company-description-img col-5" src="assets/4.jpg" alt="Фото компании">
+                <div class="col-5 company-description">
+                    English-Geo, проект аннглисйкого клуба по не забываемым экскурсиям в городе Москва. Вас ждёт полное погружения в исторечиский аспекты, Местные достопримечательности 
+                    и конечно же, вы можете заказать экскурси    на английском языке.
+                </div>
+            </div>
+        </div>
+        <div class="travel-info"> <!--  -->
+            <h1>Наши преимущетсва</h1>
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col travel-info-item">
+                        <img src="assets/1.jpg" alt="Информации о пункте">
+                        <p>Услуги гида</p>
+                    </div>
+                    <div class="col travel-info-item">
+                        <img src="assets/3.jpg" alt="Информации о пункте">
+                        <p>Билеты по программе</p>
+                    </div>
+                    <div class="col travel-info-item">
+                        <img src="assets/2.jpg" alt="Информации о пункте">
+                        <p>Транспорт</p>
+                    </div>
+                    <div class="col travel-info-item">
+                        <img src="assets/4.jpg" alt="Информации о пункте">
+                        <p>Питьевая вода </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col travel-info-item">
+                        <img src="assets/6.jpg" alt="Информации о пункте">
+                        <p>Билеты в каждую локацию на нашем пути</p>
+                    </div>
+                    <div class="col travel-info-item">
+                        <img src="assets/5.jpg" alt="Информации о пункте">
+                        <p>Сувениры и памятные открытки</p>
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section>
+            <div class="d-flex justify-content-center mb-3"> <!--  -->
+                <h2>Список пешеходных маршрутов</h2>
+            </div>
+            <div class="choice">
+                <input placeholder="Поиск по названию" type="text" oninput="routeSearchEvent(this)">
+                <label>
+                    Основной объект:
+                    <select id="mainObjectsSelect" oninput="mainSubjectFilterPick(this)">
+                        <option value="none" selected>Не выбрано</option>
+                    </select>
+                </label>
+            </div>
+
+            <table class="table" id="routeTable">
+                <tr>
+                    <th>Название</th>
+                    <th>Описание</th>
+                    <th>Основные объекты</th>
+                    <th></th>
+                </tr>
+            </table>
+            <div class="pagination" id="paginationRoutes">
+                <button class="btn first-page-btn" data-page="1">Первая страница</button>
+                <div class="pages-btn">
+                    <button class="btn" data-page="1">1</button>
+                    <button class="btn" data-page="2">2</button>
+                    <button class="btn" data-page="3">3</button>
+                </div>
+                <button class="btn last-page-btn">Последняя страница</button>
+            </div>
+        </section>
+
+        <section id="guideSection"> <!--  -->
+            <div class="d-flex justify-content-center mb-3">
+                <h2>Доступные гиды по маршруту: <span id="chosenRouteName"></span></h2>
+            </div>
+            <div class="choice">
+                <label>
+                    Язык экскурсии:
+                    <select id="excursionLanguage" oninput="guideLanguageFilterPick(this)">
+                        <option value="none" selected>Не выбрано</option>
+                    </select>
+                </label>
+                <label>
+                    Опыт работы
+                    <input placeholder="От" min="1" type="number" oninput="experienceFromPick(this)">
+                    <input placeholder="До" max="100" type="number" oninput="experienceToPick(this)">
+                </label>
+            </div>
+            <table class="table" id="guidesTable">
+                <tr>
+                    <th></th>
+                    <th>ФИО</th>
+                    <th>Языки</th>
+                    <th>Опыт работы</th>
+                    <th>Стоимость в час</th>
+                    <th></th>
+                </tr>
+            </table>
+            <div class="pagination" id="paginationGuides">
+                <button class="btn first-page-btn" data-page="1">Первая страница</button>
+                <div class="pages-btn">
+                    <button class="btn" data-page="1">1</button>
+                    <button class="btn" data-page="2">2</button>
+                    <button class="btn" data-page="3">3</button>
+                </div>
+                <button class="btn last-page-btn">Последняя страница</button>
+            </div>
+            <div class="d-flex justify-content-center" id="createOrder">
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalCreateOrder">
+                    Оформить заявку
+                </button>
+            </div>
+        </section>
+
+        <div class="footer d-flex flex-column justify-content-center align-items-center">
+            <p>Литвинов Иван 211-352</p>
+            <p>fbgh2012@mail.ru</p>
+        </div>
+    </div>
+    <div class="modal fade" id="modalCreateOrder" tabindex="-1" aria-labelledby="modalCreateOrderLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="" id="formOrder" onsubmit="return submitCreateOrder(this)">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCreateOrderLabel">Оформление заявки</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="red" id="orderError"></p>
+                        <p>ФИО гида: <span class="fw-bold" id="createOrderGuideName"></span></p>
+                        <p>Название маршрута: <span class="fw-bold" id="createOrderRoute"></span></p>
+                        <div class="mb-3">
+                            <label for="excursionDate" class="form-label">Дата экскурсии</label>
+                            <input required type="date" class="form-control" name="excursionDate" id="excursionDate">
+                        </div>
+                        <div class="mb-3">
+                            <label for="excursionStartTime" class="form-label">Время начала</label>
+                            <input required name="excursionStartTime" type="time" step="1800" min="09:00" max="23:00" class="form-control" id="excursionStartTime">
+                        </div>
+                        <div class="mb-3">
+                            <label for="excursionDuration" class="form-label">Длительность экскурсии</label>
+                            <select name="excursionDuration" id="excursionDuration" class="form-select" style="height: 38px">
+                                <option value="1">1 час</option>
+                                <option value="2">2 часа</option>
+                                <option value="3">3 часа</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="excursionPeopleCount" class="form-label">Количество человек</label>
+                            <input name="excursionPeopleCount" required type="number" class="form-control" id="excursionPeopleCount" min="1" max="20" value="1">
+                        </div>
+                        <h4 class="text-center">Дополнительные опции</h4>
+                        <div class="mb-3 form-check border-light border-2 border">
+                            <label class="form-check-label fw-bold" for="excursionOption1">Использовать скидку для школьников и студентов</label>
+                            <input name="excursionOption1" value="optionPensioners" type="checkbox" class="form-check-input" id="excursionOption1">
+                            <p class="mb-0">При предьявлении справки из школы или студенческого билета </p>
+                            <p class="mb-0 green fw-bold">-15% от стоимости</p>
+                        </div>
+                        <div class="mb-3 form-check border-light border-2 border">
+                            <label class="form-check-label fw-bold" for="excursionOption2">Тематические сувениры</label>
+                            <input name="excursionOption2" value="optionFood" type="checkbox" class="form-check-input" id="excursionOption2">
+                            <p class="mb-0 green fw-bold">Стоимость увеличевается на 500 рублей за каждого посетителя</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Закрыть</button>
+                        <button type="submit" class="btn btn-primary">Оформить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+</html>
