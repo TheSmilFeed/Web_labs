@@ -1,0 +1,9 @@
+@media print {
+    @page {
+       margin: 10cm;
+   }
+}
+
+body > *:not(header) {
+    display: none;
+}
